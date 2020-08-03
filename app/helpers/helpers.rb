@@ -1,12 +1,11 @@
 class Helpers
   
-  def self.current_user(session_hash)
-    session[:user_id] = session_hash
-    @session = session
+  def self.current_user(session)
+    @user = User.find_by_id(session[:user_id])
   end
   
   
-  def self.is_logged_in?(session_hash)
-    !!session[:user_id] == session_hash ? true : false
+  def self.is_logged_in?(session)
+    !!session[:user_id]
   end 
 end
